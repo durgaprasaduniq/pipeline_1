@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "mybucketviv"
+    bucket = "mybucketviv1"
     key    = "backend/terraform.tfstate"
     region = "ap-south-1"
   }
@@ -19,8 +19,8 @@ provider "aws" {
 
 resource "aws_instance" "my_server" {
   instance_type        = "t2.micro"
-  ami                  = "ami-068e0f1a600cd311c"
-  key_name             = "mum"
+  ami                  = "ami-0a1235697f4afa8a4"
+  key_name             = "newmumbaikey"
   availability_zone    = "ap-south-1b"
   hibernation          = true
 
@@ -45,7 +45,7 @@ resource "aws_instance" "my_server" {
       sudo sleep 120
       sudo ssh-keygen -R ${self.public_ip}
        
-      sudo ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ${self.public_ip}, playbook.yaml -u ec2-user --private-key /tmp/keys/mum.pem 
+      sudo ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ${self.public_ip}, playbook.yaml -u ec2-user --private-key /home/trevor/keys/newmumbaikey 
     EOT
   }
 }
