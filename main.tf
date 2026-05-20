@@ -2,7 +2,7 @@ terraform {
   backend "s3" {
     bucket = "mybucketviv1"
     key    = "backend/terraform.tfstate"
-    region = "ap-south-1"
+    region = "ap-south-2"
   }
 
   required_providers {
