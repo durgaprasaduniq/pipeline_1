@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket = "mybucketviv1"
+    bucket = "devopsdurgajob"
     key    = "backend/terraform.tfstate"
-    region = "ap-south-2"
+    region = "us-east-2"
   }
 
   required_providers {
@@ -14,14 +14,14 @@ terraform {
 }
 
 provider "aws" {
-  region = "ap-south-1"
+  region = "us-east-2"
 }
 
 resource "aws_instance" "my_server" {
   instance_type        = "t2.micro"
   ami                  = "ami-0a1235697f4afa8a4"
-  key_name             = "newmumbaikey"
-  availability_zone    = "ap-south-1b"
+  key_name             = "durga"
+  availability_zone    = "us-east-2b"
   hibernation          = true
 
   root_block_device {
@@ -30,7 +30,7 @@ resource "aws_instance" "my_server" {
   }
 
   tags = {
-    Name = "neekendukuuuu"
+    Name = "naaistam"
   }
 
   ebs_block_device {
@@ -45,7 +45,7 @@ resource "aws_instance" "my_server" {
       sudo sleep 120
       sudo ssh-keygen -R ${self.public_ip}
        
-      sudo ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ${self.public_ip}, playbook.yaml -u ec2-user --private-key /home/trevor/keys/newmumbaikey 
+      sudo ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ${self.public_ip}, playbook.yaml -u ec2-user --private-key /root/ansible/.ssh/mykey.pem 
     EOT
   }
 }
