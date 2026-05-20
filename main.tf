@@ -19,7 +19,7 @@ provider "aws" {
 
 resource "aws_instance" "my_server" {
   instance_type        = "t2.micro"
-  ami                  = "ami-0a1235697f4afa8a4"
+  ami                  = "ami-051de6a4e7ae45f77"
   key_name             = "durga"
   availability_zone    = "us-east-2b"
   hibernation          = true
